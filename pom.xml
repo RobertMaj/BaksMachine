@@ -15,5 +15,35 @@
         <module>BaksMachineWebApp</module>
     </modules>
 
+    <properties>
+        <java.version>1.8</java.version>
+
+        <spring.version>4.2.2.RELEASE</spring.version>
+        <springJpa-version>1.9.0.RELEASE</springJpa-version>
+        <hikariCp.version>2.4.1</hikariCp.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${springJpa-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikariCp.version}</version>
+        </dependency>
+
+
+    </dependencies>
 
 </project>
