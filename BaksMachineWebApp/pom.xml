@@ -11,5 +11,22 @@
 
     <artifactId>BaksMachineWebApp</artifactId>
 
+    <properties>
+
+        <primefaces.version>5.3</primefaces.version>
+
+    </properties>
+
+    <dependencies>
+
+
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>${primefaces.version}</version>
+        </dependency>
+
+
+    </dependencies>
 
 </project>
