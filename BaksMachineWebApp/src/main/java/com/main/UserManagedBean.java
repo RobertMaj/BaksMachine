@@ -23,15 +23,15 @@ public class UserManagedBean implements Serializable {
     private ServiceUser serviceUser;
 
     public void addCustomer() {
-        serviceUser.addUser();
+        serviceUser.addUser(getUser());
     }
 
     public void updateCustomer() {
-        serviceUser.updateUser();
+        serviceUser.updateUser(getUser());
     }
 
     public void deleteUser() {
-        serviceUser.deleteUser();
+        serviceUser.deleteUser(getUser());
     }
 
     public User getUser() {

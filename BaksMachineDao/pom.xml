@@ -17,6 +17,27 @@
             <artifactId>BaksMachineEntities</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+
+
+        <!-- JPA Provider (Hibernate) -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikariCp.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${springJpa-version}</version>
+        </dependency>
     </dependencies>
 
 </project>
