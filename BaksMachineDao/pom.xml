@@ -11,5 +11,12 @@
 
     <artifactId>BaksMachineDao</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>BaksMachine</groupId>
+            <artifactId>BaksMachineEntities</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

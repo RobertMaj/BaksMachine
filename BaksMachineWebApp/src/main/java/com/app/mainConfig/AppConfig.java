@@ -1,13 +1,18 @@
 package com.app.mainConfig;
 
+import com.db.dao.DaoUser;
+import com.db.dao.com.db.config.DaoConfiguration;
+import com.services.ServiceUser;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
@@ -19,7 +24,7 @@ import java.util.Properties;
  * Created by Robert on 2015-11-04.
  */
 @Configuration
-@EnableTransactionManagement
+@Import(DaoConfiguration.class)
 public class AppConfig {
 
     @Bean
@@ -54,5 +59,11 @@ public class AppConfig {
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;
     }
+
+    @Bean
+    public ServiceUser userService() {
+        return new ServiceUser();
+    }
+
 
 }

@@ -7,9 +7,10 @@
         <groupId>BaksMachine</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
     <artifactId>BaksMachineWebApp</artifactId>
+    <packaging>war</packaging>
 
     <properties>
 
@@ -18,7 +19,17 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>BaksMachine</groupId>
+            <artifactId>BaksMachineEntities</artifactId>
+            <version>1.0-SNAPSHOT</version>
 
+        </dependency>
+        <dependency>
+            <groupId>BaksMachine</groupId>
+            <artifactId>BaksMachineServices</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>org.primefaces</groupId>
