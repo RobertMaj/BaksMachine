@@ -1,0 +1,14 @@
+#Database Configuration
+
+baks.db.driver=org.postgresql.Driver
+baks.db.url=jdbc:postgres://ec2-54-83-57-86.compute-1.amazonaws.com:5432/dcprbvtbtejng9
+baks.db.user=ctvfjmmzmwsfvn
+baks.db.pass=DdHNKNcwYDK31-qeI9oA0VB5ks
+
+
+#Hibernate Configuration
+hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+hibernate.hbm2ddl.auto=create-drop
+hibernate.ejb.naming_strategy=org.hibernate.cfg.ImprovedNamingStrategy
+hibernate.show_sql=truea
+hibernate.format_sql=true

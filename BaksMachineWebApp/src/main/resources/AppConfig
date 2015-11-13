@@ -1,6 +1,0 @@
-#Database Configuration
-
-baks.db.driver=org.postgresql.Driver
-baks.db.url=postgres://arjtszxrgfhedf:Q3ZseYyzUiXx6zOsjHBpu-2TJ5@ec2-54-217-202-108.eu-west-1.compute.amazonaws.com:5432/d6ea1kpteon06m
-baks.db.user=arjtszxrgfhedf
-baks.db.pass=Q3ZseYyzUiXx6zOsjHBpu-2TJ5

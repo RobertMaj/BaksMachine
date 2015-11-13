@@ -2,13 +2,17 @@ package config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -19,15 +23,23 @@ import java.util.Properties;
  */
 @Configuration
 @ComponentScan("com.db.dao")
+@EnableTransactionManagement
+@PropertySource("classpath:AppConfig")
 public class DaoConfig {
 
-    @Bean
+    private static final Logger log = Logger.getLogger(DaoConfig.class);
+
+    @Autowired
+    private Environment env;
+
+    @Bean(destroyMethod = "close")
     DataSource dataSource(Environment env) {
         HikariConfig dataSourceConfig = new HikariConfig();
         dataSourceConfig.setDriverClassName(env.getRequiredProperty("baks.db.driver"));
         dataSourceConfig.setJdbcUrl(env.getRequiredProperty("baks.db.url"));
         dataSourceConfig.setUsername(env.getRequiredProperty("baks.db.user"));
         dataSourceConfig.setPassword(env.getRequiredProperty("baks.db.pass"));
+
         return new HikariDataSource(dataSourceConfig);
     }
 
@@ -41,6 +53,33 @@ public class DaoConfig {
 
         Properties jpaProperties = new Properties();
 
+        //Configures the used database dialect. This allows Hibernate to create SQL
+        //that is optimized for the used database.
+        jpaProperties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
+
+        //Specifies the action that is invoked to the database when the Hibernate
+        //SessionFactory is created or closed.
+        jpaProperties.put("hibernate.hbm2ddl.auto",
+                env.getRequiredProperty("hibernate.hbm2ddl.auto")
+        );
+
+        //Configures the naming strategy that is used when Hibernate creates
+        //new database objects and schema elements
+        jpaProperties.put("hibernate.ejb.naming_strategy",
+                env.getRequiredProperty("hibernate.ejb.naming_strategy")
+        );
+
+        //If the value of this property is true, Hibernate writes all SQL
+        //statements to the console.
+        jpaProperties.put("hibernate.show_sql",
+                env.getRequiredProperty("hibernate.show_sql")
+        );
+
+        //If the value of this property is true, Hibernate will format the SQL
+        //that is written to the console.
+        jpaProperties.put("hibernate.format_sql",
+                env.getRequiredProperty("hibernate.format_sql")
+        );
 
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
 
@@ -52,5 +91,13 @@ public class DaoConfig {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;
+    }
+
+    public Environment getEnv() {
+        return env;
+    }
+
+    public void setEnv(Environment env) {
+        this.env = env;
     }
 }

@@ -1,6 +1,8 @@
 package com.app.mainConfig;
 
 import com.services.ServiceUser;
+import config.DaoConfig;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +18,15 @@ import static org.junit.Assert.*;
 @ContextConfiguration(classes = AppConfig.class)
 public class AppConfigTest {
 
+    private static final Logger log = Logger.getLogger(AppConfigTest.class);
+
     @Autowired
-    private ServiceUser serviceUser;
+    private DaoConfig daoConfig;
+
+
 
     @Test
     public void daoShouldNotNull(){
-        assertNotNull(serviceUser.getDaoUser());
+        assertNotNull(daoConfig.getEnv());
     }
 }
