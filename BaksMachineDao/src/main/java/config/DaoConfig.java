@@ -14,6 +14,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.interceptor.TransactionProxyFactoryBean;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
@@ -24,10 +25,9 @@ import java.util.Properties;
  * Created by RobertM on 2015-11-12.
  */
 @Configuration
-@Import(EntitiesConfig.class)
+@ComponentScan(basePackages = "com.db.dao")
 @EnableJpaRepositories(basePackages = {"com.db.dao"})
 @EnableTransactionManagement
-@ComponentScan("com.db.dao")
 @PropertySource("classpath:AppConfig")
 public class DaoConfig {
 
@@ -47,7 +47,7 @@ public class DaoConfig {
         return new HikariDataSource(dataSourceConfig);
     }
 
-    @Bean
+    @Bean(name = "entityManagerFactory")
     LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(Environment env) {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource(env));
@@ -94,6 +94,11 @@ public class DaoConfig {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactoryBean(env).getObject());
         return transactionManager;
+    }
+
+    @Bean
+    public TransactionProxyFactoryBean transactionProxyFactoryBean() {
+        return new TransactionProxyFactoryBean();
     }
 
     @Bean

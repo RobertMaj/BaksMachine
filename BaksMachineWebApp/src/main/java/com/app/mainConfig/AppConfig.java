@@ -1,8 +1,5 @@
 package com.app.mainConfig;
 
-import com.services.ServiceUser;
-import config.DaoConfig;
-import config.EntitiesConfig;
 import config.ServicesConfig;
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.ComponentScan;
