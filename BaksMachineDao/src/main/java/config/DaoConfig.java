@@ -2,6 +2,7 @@ package config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import model.entities.User;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
@@ -14,6 +15,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -23,9 +25,9 @@ import java.util.Properties;
  */
 @Configuration
 @Import(EntitiesConfig.class)
-@EnableJpaRepositories(basePackages = "com.db.dao.")
-@ComponentScan("com.db.dao")
+@EnableJpaRepositories(basePackages = {"com.db.dao"})
 @EnableTransactionManagement
+@ComponentScan("com.db.dao")
 @PropertySource("classpath:AppConfig")
 public class DaoConfig {
 
@@ -46,12 +48,11 @@ public class DaoConfig {
     }
 
     @Bean
-    LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource dataSource,
-                                                                    Environment env) {
+    LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(Environment env) {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactoryBean.setDataSource(dataSource);
+        entityManagerFactoryBean.setDataSource(dataSource(env));
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManagerFactoryBean.setPackagesToScan("src.main.java");
+        entityManagerFactoryBean.setPackagesToScan("model.entities");
 
         Properties jpaProperties = new Properties();
 
@@ -89,9 +90,9 @@ public class DaoConfig {
     }
 
     @Bean
-    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+    public JpaTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory);
+        transactionManager.setEntityManagerFactory(entityManagerFactoryBean(env).getObject());
         return transactionManager;
     }
 

@@ -1,12 +1,10 @@
 package com.main;
 
 import com.services.ServiceUser;
-import model.User;
+import model.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
 
