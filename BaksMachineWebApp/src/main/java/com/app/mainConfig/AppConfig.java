@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
  */
 @Configuration
 @Import(ServicesConfig.class)
-@ComponentScan
+@ComponentScan(basePackages = "com.main")
 @PropertySource("classpath:log4j")
 public class AppConfig {
 

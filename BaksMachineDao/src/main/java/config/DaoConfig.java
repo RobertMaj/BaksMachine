@@ -96,13 +96,13 @@ public class DaoConfig {
         return transactionManager;
     }
 
-    @Bean
-    public TransactionProxyFactoryBean transactionProxyFactoryBean() {
-        return new TransactionProxyFactoryBean();
-    }
-
-    @Bean
-    public AutowiredAnnotationBeanPostProcessor autowiredAnnotationBeanPostProcessor() {
-        return new AutowiredAnnotationBeanPostProcessor();
-    }
+//    @Bean
+//    public TransactionProxyFactoryBean transactionProxyFactoryBean() {
+//        return new TransactionProxyFactoryBean();
+//    }
+//
+//    @Bean
+//    public AutowiredAnnotationBeanPostProcessor autowiredAnnotationBeanPostProcessor() {
+//        return new AutowiredAnnotationBeanPostProcessor();
+//    }
 }

@@ -16,18 +16,17 @@ public class ServiceUser {
     @Autowired
     private UserRepository userRepository;
 
-    @PostConstruct
     public void insertUser(){
         User sUser = new User();
         sUser.setId(1);
         sUser.setName("Robert");
         sUser.setSurname("Maj");
-        User u = userRepository.findOne(1);
+        User u = userRepository.findUserByName("Maj");
     }
 
 
     public void addUser(User user) {
-//        userRepository.save(user);
+        userRepository.save(user);
 
     }
 

@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="exploded-war" build-on-make="true" name="Baks">
-    <output-path>$PROJECT_DIR$/out/artifacts/Baks</output-path>
-    <root id="root" />
-  </artifact>
-</component>

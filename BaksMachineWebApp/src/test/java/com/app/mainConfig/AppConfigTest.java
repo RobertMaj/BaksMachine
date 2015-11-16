@@ -1,9 +1,12 @@
 package com.app.mainConfig;
 
 import com.db.dao.UserRepository;
+import com.main.UserManagedBean;
 import com.services.ServiceUser;
 import config.DaoConfig;
+import model.entities.User;
 import org.apache.log4j.Logger;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +26,15 @@ public class AppConfigTest {
 
     private static final Logger log = Logger.getLogger(AppConfigTest.class);
 
+    private UserManagedBean managedBean;
 
-    @Autowired
-    ServiceUser serviceUser;
+   @Before
+   public void init(){
+       managedBean = new UserManagedBean();
+   }
 
     @Test
     public void daoShouldNotNull(){
-        assertNotNull(serviceUser);
+        assertNotNull(managedBean.getServiceUser());
     }
 }
