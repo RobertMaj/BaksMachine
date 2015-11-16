@@ -4,14 +4,14 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
@@ -22,6 +22,8 @@ import java.util.Properties;
  * Created by RobertM on 2015-11-12.
  */
 @Configuration
+@Import(EntitiesConfig.class)
+@EnableJpaRepositories(basePackages = "com.db.dao.")
 @ComponentScan("com.db.dao")
 @EnableTransactionManagement
 @PropertySource("classpath:AppConfig")
@@ -39,7 +41,7 @@ public class DaoConfig {
         dataSourceConfig.setJdbcUrl(env.getRequiredProperty("baks.db.url"));
         dataSourceConfig.setUsername(env.getRequiredProperty("baks.db.user"));
         dataSourceConfig.setPassword(env.getRequiredProperty("baks.db.pass"));
-
+        dataSourceConfig.setConnectionTestQuery("SELECT 1");
         return new HikariDataSource(dataSourceConfig);
     }
 
@@ -93,11 +95,8 @@ public class DaoConfig {
         return transactionManager;
     }
 
-    public Environment getEnv() {
-        return env;
-    }
-
-    public void setEnv(Environment env) {
-        this.env = env;
+    @Bean
+    public AutowiredAnnotationBeanPostProcessor autowiredAnnotationBeanPostProcessor() {
+        return new AutowiredAnnotationBeanPostProcessor();
     }
 }

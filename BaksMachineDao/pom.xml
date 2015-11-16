@@ -18,15 +18,6 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-
-
-        <!-- JPA Provider (Hibernate) -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>

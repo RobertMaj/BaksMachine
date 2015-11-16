@@ -1,5 +1,6 @@
 package com.app.mainConfig;
 
+import com.services.ServiceUser;
 import config.DaoConfig;
 import config.EntitiesConfig;
 import config.ServicesConfig;
@@ -13,8 +14,8 @@ import org.springframework.context.annotation.PropertySource;
  * Created by Robert on 2015-11-04.
  */
 @Configuration
-@Import({ServicesConfig.class, EntitiesConfig.class})
-@ComponentScan("com")
+@Import(ServicesConfig.class)
+@ComponentScan
 @PropertySource("classpath:log4j")
 public class AppConfig {
 

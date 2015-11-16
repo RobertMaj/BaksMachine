@@ -1,6 +1,6 @@
 package com.services;
 
-import com.db.dao.DaoUser;
+import com.db.dao.UserRepository;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,13 +9,15 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by Robert on 2015-11-04.
  */
-@Service("UserService")
+@Service
 public class ServiceUser {
 
+
     @Autowired
-    private DaoUser daoUser;
+    private UserRepository userRepository;
 
     public void addUser(User user) {
+        userRepository.save(user);
 
     }
 
@@ -27,11 +29,4 @@ public class ServiceUser {
 
     }
 
-    public DaoUser getDaoUser() {
-        return daoUser;
-    }
-
-    public void setDaoUser(DaoUser daoUser) {
-        this.daoUser = daoUser;
-    }
 }
