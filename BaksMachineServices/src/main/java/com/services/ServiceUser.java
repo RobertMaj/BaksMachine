@@ -20,7 +20,6 @@ public class ServiceUser {
 
     public void insertUser(){
         User sUser = new User();
-        sUser.setId(1);
         sUser.setName("Robert");
         sUser.setSurname("Maj");
 
@@ -28,7 +27,7 @@ public class ServiceUser {
 
 
     public void addUser(User user) {
-        List<User> u = userRepository.findUserByName("Maj");
+        userRepository.saveAndFlush(user);
 
     }
 

@@ -6,9 +6,15 @@ baks.db.url=jdbc:postgresql://ec2-54-83-57-86.compute-1.amazonaws.com:5432/dcprb
 baks.db.user=ctvfjmmzmwsfvn
 baks.db.pass=DdHNKNcwYDK31-qeI9oA0VB5ks
 
+#baks.db.driver=org.postgresql.Driver
+#baks.db.url=jdbc:postgresql://localhost:5432/learn?user=postgres&password=flyemirates
+#baks.db.user=postgres
+#baks.db.pass=flyemirates
+
+
 #Hibernate Configuration
 hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-hibernate.hbm2ddl.auto=validate
+hibernate.hbm2ddl.auto=create
 hibernate.ejb.naming_strategy=org.hibernate.cfg.ImprovedNamingStrategy
 hibernate.show_sql=true
 hibernate.format_sql=true

@@ -26,15 +26,14 @@ public class AppConfigTest {
 
     private static final Logger log = Logger.getLogger(AppConfigTest.class);
 
-    private UserManagedBean managedBean;
-
-   @Before
-   public void init(){
-       managedBean = new UserManagedBean();
-   }
+    @Autowired
+    private ServiceUser serviceUser;
 
     @Test
     public void daoShouldNotNull(){
-        assertNotNull(managedBean.getServiceUser());
+        User user = new User();
+        user.setName("Robert");
+        user.setSurname("Maj");
+        serviceUser.addUser(user);
     }
 }

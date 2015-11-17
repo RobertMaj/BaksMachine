@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostP
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.interceptor.TransactionProxyFactoryBean;
 
@@ -44,6 +46,7 @@ public class DaoConfig {
         dataSourceConfig.setUsername(env.getRequiredProperty("baks.db.user"));
         dataSourceConfig.setPassword(env.getRequiredProperty("baks.db.pass"));
         dataSourceConfig.setConnectionTestQuery("SELECT 1");
+        dataSourceConfig.setConnectionTimeout(1000);
         return new HikariDataSource(dataSourceConfig);
     }
 
@@ -51,8 +54,10 @@ public class DaoConfig {
     LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(Environment env) {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource(env));
-        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManagerFactoryBean.setPackagesToScan("model.entities");
+        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        vendorAdapter.setGenerateDdl(false);
+        entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
+        entityManagerFactoryBean.setPackagesToScan(new String[]{"model.entities"});
 
         Properties jpaProperties = new Properties();
 
@@ -90,19 +95,10 @@ public class DaoConfig {
     }
 
     @Bean
-    public JpaTransactionManager transactionManager() {
+    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactoryBean(env).getObject());
+        transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;
     }
 
-    @Bean
-    public TransactionProxyFactoryBean transactionProxyFactoryBean() {
-        return new TransactionProxyFactoryBean();
-    }
-//
-//    @Bean
-//    public AutowiredAnnotationBeanPostProcessor autowiredAnnotationBeanPostProcessor() {
-//        return new AutowiredAnnotationBeanPostProcessor();
-//    }
 }
