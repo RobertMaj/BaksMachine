@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.List;
 
 /**
  * Created by Robert on 2015-11-04.
@@ -14,5 +15,5 @@ import javax.persistence.criteria.CriteriaBuilder;
 @Transactional
 public interface UserRepository  extends JpaRepository<User, Integer>{
 
-        public User findUserByName(String name);
+        public List<User> findUserByName(String name);
 }
