@@ -30,11 +30,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="AParentBaksMachine" target="1.5" />
-      <module name="BaksMachineDao" target="1.5" />
-      <module name="BaksMachineEntities" target="1.5" />
-      <module name="BaksMachineServices" target="1.5" />
-      <module name="BaksMachineWebApp" target="1.5" />
+      <module name="AParentBaksMachine" target="1.8" />
+      <module name="BaksMachineDao" target="1.8" />
+      <module name="BaksMachineEntities" target="1.8" />
+      <module name="BaksMachineServices" target="1.8" />
+      <module name="BaksMachineWebApp" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
