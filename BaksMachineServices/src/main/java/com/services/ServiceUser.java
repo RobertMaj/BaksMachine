@@ -18,25 +18,17 @@ public class ServiceUser {
     @Autowired
     private UserRepository userRepository;
 
-    public void insertUser(){
-        User sUser = new User();
-        sUser.setName("Robert");
-        sUser.setSurname("Maj");
-
-    }
-
-
     public void addUser(User user) {
         userRepository.saveAndFlush(user);
 
     }
 
     public void deleteUser(User user) {
-
+        userRepository.delete(user);
     }
 
     public void updateUser(User user) {
-
+        addUser(user);
     }
 
 }

@@ -24,6 +24,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.1.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.8.6" />
           <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.12" />
+          <element id="library" level="project" name="Maven: com.ocpsoft:prettyfaces-jsf2:3.3.3" />
           <element id="library" level="project" name="Maven: org.primefaces:primefaces:5.3" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.2.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.2.2.RELEASE" />

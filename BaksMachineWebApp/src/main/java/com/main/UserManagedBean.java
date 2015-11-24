@@ -16,16 +16,10 @@ import java.io.Serializable;
  */
 
 @Component("userMB")
+@ManagedBean
 @RequestScoped
 public class UserManagedBean implements Serializable {
 
-    @PostConstruct
-    public void start(){
-        user = new User();
-        user.setId(1);
-        user.setName("Robert");
-        user.setSurname("Maj");
-    }
 
     private User user;
 

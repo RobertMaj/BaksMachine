@@ -2,23 +2,20 @@ package config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import model.entities.User;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.interceptor.TransactionProxyFactoryBean;
 
-import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -57,34 +54,24 @@ public class DaoConfig {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setGenerateDdl(false);
         entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
-        entityManagerFactoryBean.setPackagesToScan(new String[]{"model.entities"});
+        entityManagerFactoryBean.setPackagesToScan("model.entities");
 
         Properties jpaProperties = new Properties();
 
-        //Configures the used database dialect. This allows Hibernate to create SQL
-        //that is optimized for the used database.
         jpaProperties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
 
-        //Specifies the action that is invoked to the database when the Hibernate
-        //SessionFactory is created or closed.
         jpaProperties.put("hibernate.hbm2ddl.auto",
                 env.getRequiredProperty("hibernate.hbm2ddl.auto")
         );
 
-        //Configures the naming strategy that is used when Hibernate creates
-        //new database objects and schema elements
         jpaProperties.put("hibernate.ejb.naming_strategy",
                 env.getRequiredProperty("hibernate.ejb.naming_strategy")
         );
 
-        //If the value of this property is true, Hibernate writes all SQL
-        //statements to the console.
         jpaProperties.put("hibernate.show_sql",
                 env.getRequiredProperty("hibernate.show_sql")
         );
 
-        //If the value of this property is true, Hibernate will format the SQL
-        //that is written to the console.
         jpaProperties.put("hibernate.format_sql",
                 env.getRequiredProperty("hibernate.format_sql")
         );
