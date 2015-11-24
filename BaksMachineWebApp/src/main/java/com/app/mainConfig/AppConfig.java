@@ -11,7 +11,7 @@ import org.springframework.context.annotation.PropertySource;
  * Created by Robert on 2015-11-04.
  */
 @Configuration
-@Import(ServicesConfig.class)
+@Import({ServicesConfig.class, SecurityConfig.class})
 @ComponentScan(basePackages = "com.main")
 @PropertySource("classpath:log4j")
 public class AppConfig {

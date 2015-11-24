@@ -14,8 +14,8 @@ import java.io.Serializable;
 /**
  * Created by Robert on 2015-11-12.
  */
-
-@Component("userMB")
+@ManagedBean(name = "userMb", eager = true)
+@Component
 @RequestScoped
 public class UserManagedBean implements Serializable {
 

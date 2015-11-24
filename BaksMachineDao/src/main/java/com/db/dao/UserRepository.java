@@ -15,5 +15,5 @@ import java.util.List;
 @Transactional
 public interface UserRepository  extends JpaRepository<User, Integer>{
 
-        public List<User> findUserByName(String name);
+        public User findUserByName(String name);
 }
