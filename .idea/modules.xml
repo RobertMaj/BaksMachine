@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AParentBaksMachine.iml" filepath="$PROJECT_DIR$/AParentBaksMachine.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BaksMachineDao/BaksMachineDao.iml" filepath="$PROJECT_DIR$/BaksMachineDao/BaksMachineDao.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BaksMachineEntities/BaksMachineEntities.iml" filepath="$PROJECT_DIR$/BaksMachineEntities/BaksMachineEntities.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BaksMachineServices/BaksMachineServices.iml" filepath="$PROJECT_DIR$/BaksMachineServices/BaksMachineServices.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BaksMachineWebApp/BaksMachineWebApp.iml" filepath="$PROJECT_DIR$/BaksMachineWebApp/BaksMachineWebApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AOpera2016Parent.iml" filepath="$PROJECT_DIR$/AOpera2016Parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OperaDao/BaksMachineDao.iml" filepath="$PROJECT_DIR$/OperaDao/BaksMachineDao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OperaEntities/BaksMachineEntities.iml" filepath="$PROJECT_DIR$/OperaEntities/BaksMachineEntities.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OperaServices/BaksMachineServices.iml" filepath="$PROJECT_DIR$/OperaServices/BaksMachineServices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OperaWebApp/BaksMachineWebApp.iml" filepath="$PROJECT_DIR$/OperaWebApp/BaksMachineWebApp.iml" />
     </modules>
   </component>
 </project>

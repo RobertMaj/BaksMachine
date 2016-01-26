@@ -4,17 +4,17 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="BaksMachineWebApp" />
+          <element id="module-output" name="OperaWebApp" />
         </element>
         <element id="directory" name="lib">
           <element id="archive" name="BaksMachineEntities-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="BaksMachineEntities" />
+            <element id="module-output" name="OperaEntities" />
           </element>
           <element id="archive" name="BaksMachineServices-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="BaksMachineServices" />
+            <element id="module-output" name="OperaServices" />
           </element>
           <element id="archive" name="BaksMachineDao-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="BaksMachineDao" />
+            <element id="module-output" name="OperaDao" />
           </element>
           <element id="library" level="project" name="Maven: com.zaxxer:HikariCP:2.4.1" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:1.9.0.RELEASE" />
@@ -65,9 +65,9 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/BaksMachineWebApp/target/BaksMachineWebApp-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/OperaWebApp/target/BaksMachineWebApp-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="BaksMachineWebApp/web/Web" />
+      <element id="javaee-facet-resources" facet="OperaWebApp/web/Web" />
     </root>
   </artifact>
 </component>
